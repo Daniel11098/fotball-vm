@@ -1,9 +1,8 @@
 package no.vm2026.fotball_vm.core.service;
 
-import no.vm2026.fotball_vm.core.domain.NationalTeam;
 import no.vm2026.fotball_vm.core.domain.NatonalMatch;
 import no.vm2026.fotball_vm.core.domain.TournamentType;
-import no.vm2026.fotball_vm.core.ports.in.NationalTeams;
+import no.vm2026.fotball_vm.core.ports.in.NationalMatches;
 import no.vm2026.fotball_vm.core.ports.out.NationalMatchRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class NationalMatchService implements NationalTeams {
+public class NationalMatchService implements NationalMatches {
     private final NationalMatchRepository nationalMatchRepository;
 
     public NationalMatchService(NationalMatchRepository nationalMatchRepository){
