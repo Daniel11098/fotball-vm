@@ -17,7 +17,7 @@ public class WebClientConfig {
     public WebClient apiFootballWebCleint(){
         return WebClient.builder()
                 .baseUrl(baseUrl)
-                .defaultHeader("x-apisports-key", apiValue)
+                .defaultHeader("X-Auth-Token", apiValue)
                 .build();
     }
 

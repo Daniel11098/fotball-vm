@@ -16,5 +16,5 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 api-football:
   key: ${API_FOOTBALL_KEY}
-  base-url: https://v3.football.api-sports.io
+  base-url: https://api.football-data.org/v4
 
