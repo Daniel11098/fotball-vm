@@ -14,6 +14,6 @@ public class TestController {
 
     @GetMapping("/test")
     public String test() {
-        return apiFootballService.fetchWorlCupMatches();
+        return apiFootballService.fetchTodaysWorlCupMatches();
     }
 }
