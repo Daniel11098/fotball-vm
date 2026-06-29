@@ -9,17 +9,15 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface NationalMatchRepository extends JpaRepository<NatonalMatch, Integer> {
+public interface MatchRepository extends JpaRepository<Match, Integer> {
 
-
-    List<NatonalMatch> findByKickOffTimeBetweenAndTournamentTournamentType(LocalDateTime start, LocalDateTime end,
-                                                                        TournamentType tournament);
+    List<Match> findByKickOffTimeBetweenAndTournamentTournamentType(LocalDateTime start, LocalDateTime end,
+                                                                            TournamentType tournament);
     Match findByMatchId(int matchId);
 
     @Query("SELECT m.manOfTheMatch FROM Match m WHERE m.matchId = :matchId")
     Optional<Player> findManOfTheMatchByMatchId(@Param("matchId") int matchId);
 
-    List<NatonalMatch> findByTournamentTournamentType(TournamentType tournament);
-
+    List<Match> findByTournamentTournamentType(TournamentType tournament);
 
 }

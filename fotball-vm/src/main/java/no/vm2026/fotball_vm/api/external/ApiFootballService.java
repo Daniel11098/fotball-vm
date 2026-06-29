@@ -24,7 +24,8 @@ public class ApiFootballService {
                         .queryParam("dateTo", today)
                         .build())
                 .retrieve()//hent responsen
-                .bodyToMono(NationalMatchesWrapperDTO.class) //konverter til tekst
+                .bodyToMono(NationalMatchesWrapperDTO.class) //konverter til NationalMatchesWrapperDTO,
+                                                            //men i starten så konvertere den til String
                 .block(); //Vente på svar (synkonisert)
     }
 

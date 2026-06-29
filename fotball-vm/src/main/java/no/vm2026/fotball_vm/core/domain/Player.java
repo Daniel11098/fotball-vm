@@ -23,7 +23,7 @@ public class Player {
     protected List<ClubTeam> clubTeams;
     @ManyToOne
     @JoinColumn(name = "current_club_id")
-    protected ClubTeam correntClub;
+    protected ClubTeam currentClub;
     protected int matchesPlayed;
     protected int goalscored;
 
@@ -36,7 +36,7 @@ public class Player {
         this.age = age;
         this.nationalTeam = nationalTeam;
         this.clubTeams = clubTeams;
-        this.correntClub = correntClub;
+        this.currentClub = correntClub;
         this.matchesPlayed = matchesPlayed;
         this.goalscored = goalscored;
     }
@@ -85,12 +85,12 @@ public class Player {
         this.clubTeams = clubTeams;
     }
 
-    public ClubTeam getCorrentClub() {
-        return correntClub;
+    public ClubTeam getCurrentClub() {
+        return currentClub;
     }
 
-    public void setCorrentClub(ClubTeam correntClub) {
-        this.correntClub = correntClub;
+    public void setCurrentClub(ClubTeam correntClub) {
+        this.currentClub = correntClub;
     }
 
     public int getMatchesPlayed() {

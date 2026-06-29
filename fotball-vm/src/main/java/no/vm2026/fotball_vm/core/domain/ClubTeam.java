@@ -9,7 +9,7 @@ import java.util.List;
 @Table (name = "ClubTeam")
 public class ClubTeam extends Team {
     protected String venue;
-    @OneToMany(mappedBy = "correntClub")
+    @OneToMany(mappedBy = "currentClub")
     protected List<Player> players;
     public ClubTeam(int teamId, String name, int matchesPlayed,
                     int goalScored, int code, List<Player> players) {
