@@ -1,9 +1,13 @@
 package no.vm2026.fotball_vm.core.domain;
 import jakarta.persistence.*;
-import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.List;
+@Data
 @Entity
 @Table(name= "teams")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Team {
     @Id

@@ -1,9 +1,14 @@
 package no.vm2026.fotball_vm.core.domain;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.time.LocalDateTime;
 import java.util.*;
+@Data
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "Match")
 public  class Match{
     @Id
@@ -79,5 +84,6 @@ public  class Match{
     }
 
     public Match(){}
+
 
 }
