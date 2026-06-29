@@ -1,5 +1,6 @@
 package no.vm2026.fotball_vm.api.external;
 
+import no.vm2026.fotball_vm.api.external.dto.NationalMatchesWrapperDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -13,7 +14,7 @@ public class ApiFootballService {
         this.webClient = webClient;
     }
 
-    public String  fetchTodaysWorlCupMatches(){
+    public NationalMatchesWrapperDTO  fetchTodaysWorlCupMatches(){
         LocalDate today = LocalDate.now();
         return webClient.get() //Send en Get forespøsel
                 //.uri("/competitions/2000/matches?"+ "dateFrom?"+ today + "dateTo?" + today) // til dette endepunktet
@@ -23,11 +24,11 @@ public class ApiFootballService {
                         .queryParam("dateTo", today)
                         .build())
                 .retrieve()//hent responsen
-                .bodyToMono(String.class) //konverter til tekst
+                .bodyToMono(NationalMatchesWrapperDTO.class) //konverter til tekst
                 .block(); //Vente på svar (synkonisert)
     }
 
-    public String fetchYesterdayWorldCupMatches(){
+    public NationalMatchesWrapperDTO fetchYesterdayWorldCupMatches(){
         LocalDate yesterday = LocalDate.now().minusDays(1);
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -36,11 +37,11 @@ public class ApiFootballService {
                         .queryParam("dateTo", yesterday)
                         .build())
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(NationalMatchesWrapperDTO.class)
                 .block();
     }
 
-    public String fetchTomorrowsWorldCupMatches(){
+    public NationalMatchesWrapperDTO fetchTomorrowsWorldCupMatches(){
         LocalDate tomorrow = LocalDate.now().plusDays(1);
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -49,7 +50,7 @@ public class ApiFootballService {
                         .queryParam("dateTo", tomorrow)
                         .build())
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(NationalMatchesWrapperDTO.class)
                 .block();
     }
 

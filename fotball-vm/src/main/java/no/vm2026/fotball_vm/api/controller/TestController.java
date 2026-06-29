@@ -1,6 +1,7 @@
 package no.vm2026.fotball_vm.api.controller;
 
 import no.vm2026.fotball_vm.api.external.ApiFootballService;
+import no.vm2026.fotball_vm.api.external.dto.NationalMatchesWrapperDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +14,7 @@ public class TestController {
     }
 
     @GetMapping("/test")
-    public String test() {
+    public NationalMatchesWrapperDTO test() {
         return apiFootballService.fetchTodaysWorlCupMatches();
     }
 }

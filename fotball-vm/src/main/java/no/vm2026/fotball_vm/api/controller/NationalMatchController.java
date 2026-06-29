@@ -1,6 +1,7 @@
 package no.vm2026.fotball_vm.api.controller;
 
 import no.vm2026.fotball_vm.api.external.ApiFootballService;
+import no.vm2026.fotball_vm.api.external.dto.NationalMatchesWrapperDTO;
 import no.vm2026.fotball_vm.core.domain.NatonalMatch;
 import no.vm2026.fotball_vm.core.domain.TournamentType;
 import no.vm2026.fotball_vm.core.ports.in.NationalMatches;
@@ -38,17 +39,17 @@ public class NationalMatchController {
     }
 
     @GetMapping("wc/today")
-    public String getTodaysWcNationalMatches(){
+    public NationalMatchesWrapperDTO getTodaysWcNationalMatches(){
         return apiFootballService.fetchTodaysWorlCupMatches();
     }
 
     @GetMapping("wc/yesterday")
-    public String getYesterdaysWcNationalMatches(){
+    public NationalMatchesWrapperDTO getYesterdaysWcNationalMatches(){
         return apiFootballService.fetchYesterdayWorldCupMatches();
     }
 
     @GetMapping("wc/tomorrow")
-    public String getTomorrowsWcNationalMatches(){
+    public NationalMatchesWrapperDTO getTomorrowsWcNationalMatches(){
         return apiFootballService.fetchTomorrowsWorldCupMatches();
     }
 }

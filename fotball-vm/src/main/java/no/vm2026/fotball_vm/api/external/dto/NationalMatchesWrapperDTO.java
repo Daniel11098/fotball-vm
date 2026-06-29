@@ -8,5 +8,5 @@ import java.util.List;
 public class NationalMatchesWrapperDTO {
     //MatchesWrapperDTO = døren inn til listen!
     //"currentMatchday":3,"winner":null},"id":537423
-    private List<NationalTeamResponsDTO> matches;
+    private List<NationalMatchesResponsDTO> matches;
 }
