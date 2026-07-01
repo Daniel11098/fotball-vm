@@ -54,4 +54,9 @@ public class MatchService implements Matches {
 
         return yesterdaysMatches;
     }
+
+    @Override
+    public List<Match> getAllYesterdayTeamMatches() {
+        return matchRepository.findByStatus("FINISHED");
+    }
 }

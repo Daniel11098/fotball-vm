@@ -26,6 +26,7 @@ public class MatchMapper {
         return nationalTeamService.findOrCreat(dto.getId(), dto.getName(), dto.getTla());
     }
 
+
     public Match toMatch(NationalMatchesResponsDTO dto){
         Match match = new Match();
         match.setMatchId(dto.getId());
@@ -45,5 +46,6 @@ public class MatchMapper {
         match.setAwayTeam(toNationalTeam(dto.getAwayTeam()));
         return match;
     }
+
 
 }

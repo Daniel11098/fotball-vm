@@ -11,6 +11,10 @@ import java.util.Optional;
 
 public interface MatchRepository extends JpaRepository<Match, Integer> {
 
+    List<Match> findByStatus(String status);
+
+
+
     List<Match> findByKickOffTimeBetweenAndTournamentTournamentType(LocalDateTime start, LocalDateTime end,
                                                                             TournamentType tournament);
     Match findByMatchId(int matchId);

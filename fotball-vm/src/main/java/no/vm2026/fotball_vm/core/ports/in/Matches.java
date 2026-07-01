@@ -9,4 +9,5 @@ public interface Matches {
     List<Match> getAllTodaysTeamMatches(TournamentType tournament);
     List<Match> getAllTomorrowTeamMatches(TournamentType tournament);
     List<Match> getAllYesterdayTeamMatches(TournamentType tournament);
+    List<Match> getAllYesterdayTeamMatches();
 }
