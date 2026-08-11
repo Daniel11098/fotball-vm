@@ -17,4 +17,11 @@ public class NationalMatchesResponsDTO {
     private NationalTeamResponsDTO awayTeam;  // ikke awayTeamName
     private String stage;
     private ScoreDTO score;
+
+    /*
+    API-Football JSON        -----→   DTO-feltnavn bestemmer hva Jackson leser
+    "id", "utcDate"                     (id, utcDate)
+    Database → Frontend      -----→   Match-feltnavn bestemmer hva Jackson sender
+    (matchId, kickOffTime, homeTeamScore)
+     */
 }

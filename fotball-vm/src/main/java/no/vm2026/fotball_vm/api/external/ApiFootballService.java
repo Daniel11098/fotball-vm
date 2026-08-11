@@ -15,7 +15,7 @@ public class ApiFootballService {
     }
 
     public NationalMatchesWrapperDTO  fetchTodaysWorlCupMatches(){
-        LocalDate today = LocalDate.now();
+        LocalDate today = LocalDate.of(2026, 7,  1);
         return webClient.get() //Send en Get forespøsel
                 //.uri("/competitions/2000/matches?"+ "dateFrom?"+ today + "dateTo?" + today) // til dette endepunktet
                 .uri(uriBuilder -> uriBuilder
@@ -25,12 +25,12 @@ public class ApiFootballService {
                         .build())
                 .retrieve()//hent responsen
                 .bodyToMono(NationalMatchesWrapperDTO.class) //konverter til NationalMatchesWrapperDTO,
-                                                            //men i starten så konvertere den til String
+                                                            // men i starten så konvertere den til String
                 .block(); //Vente på svar (synkonisert)
     }
 
     public NationalMatchesWrapperDTO fetchYesterdayWorldCupMatches(){
-        LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDate yesterday = LocalDate.of(2026, 6, 30);
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/competitions/2000/matches")
@@ -43,7 +43,7 @@ public class ApiFootballService {
     }
 
     public NationalMatchesWrapperDTO fetchTomorrowsWorldCupMatches(){
-        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        LocalDate tomorrow = LocalDate.of(2026, 7, 2);
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/competitions/2000/matches")

@@ -1,8 +1,10 @@
 package no.vm2026.fotball_vm.api.controller;
 
+import no.vm2026.fotball_vm.api.controller.dto.MatchResponseMapper;
+import no.vm2026.fotball_vm.api.controller.dto.MatchesResponseDTO;
 import no.vm2026.fotball_vm.api.external.ApiFootballService;
 import no.vm2026.fotball_vm.api.external.MatchSyncService;
-import no.vm2026.fotball_vm.api.external.dto.NationalMatchesResponsDTO;
+import no.vm2026.fotball_vm.api.controller.dto.MatchListDTO;
 import no.vm2026.fotball_vm.api.external.dto.NationalMatchesWrapperDTO;
 import no.vm2026.fotball_vm.core.domain.Match;
 import no.vm2026.fotball_vm.core.domain.TournamentType;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.stream.Collectors;
 
 import java.util.List;
 
@@ -22,14 +25,16 @@ public class NationalMatchController {
     private final Matches nationalMatches;
     private final MatchSyncService matchSyncService;
     private final MatchService matchService;
+    private final MatchResponseMapper matchResponseMapper;
 
     public NationalMatchController(ApiFootballService apiFootballService,
                                    Matches nationalMatches, MatchSyncService matchSyncService,
-                                   MatchService matchService){
+                                   MatchService matchService, MatchResponseMapper matchResponseMapper){
         this.nationalMatches = nationalMatches;
         this.apiFootballService = apiFootballService;
         this.matchSyncService = matchSyncService;
         this.matchService = matchService;
+        this.matchResponseMapper = matchResponseMapper;
     }
 
     @GetMapping
@@ -53,9 +58,13 @@ public class NationalMatchController {
     }
 
     @GetMapping("wc/yesterday")
-    public List<Match> getYesterdaysWcNationalMatches(){
+    public MatchListDTO getYesterdaysWcNationalMatches(){
         matchSyncService.syncYesterdaysMatches();
-        return matchService.getAllYesterdayTeamMatches();
+        List<Match> matches = matchService.getAllYesterdayTeamMatches();
+        List<MatchesResponseDTO> responseDTOs = matches.stream()
+                .map(match -> matchResponseMapper.toResponseDTO(match))
+                .collect(Collectors.toList());
+        return new MatchListDTO(responseDTOs);
     }
 
     @GetMapping("wc/tomorrow")

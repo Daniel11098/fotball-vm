@@ -12,15 +12,15 @@ import java.util.*;
 @Table(name = "Match")
 public  class Match{
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     protected int matchId;
 
     @ManyToOne
     protected Team homeTeam;
     @ManyToOne
     protected Team awayTeam;
-    protected int homeTeamScore;
-    protected int awayTeamScore;
+    protected Integer  homeTeamScore;
+    protected Integer  awayTeamScore;
     @Nullable
     @ManyToMany
     @JoinTable(
@@ -58,7 +58,7 @@ public  class Match{
     )
     protected List<Player> card;
 
-    public Match(int matchId,int teamOneScore, int teamTwoScore, Tournament tournament,
+    public Match(int matchId,Integer teamOneScore, Integer  teamTwoScore, Tournament tournament,
                  LocalDateTime kickOffTime, Player manOfTheMatch,
                  List<Player> card) {
         this.matchId = matchId;
@@ -70,7 +70,7 @@ public  class Match{
         this.card = card;
     }
 
-    public Match(int matchId, Team homeTeam, Team awayTeam, int homeTeamScore, int awayTeamScore,
+    public Match(int matchId, Team homeTeam, Team awayTeam, Integer  homeTeamScore, Integer  awayTeamScore,
                  Tournament tournament, LocalDateTime kickOffTime, String status, String stage) {
         this.matchId = matchId;
         this.homeTeam = homeTeam;

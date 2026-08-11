@@ -23,7 +23,7 @@ public class MatchMapper {
     }
 
     public NationalTeam toNationalTeam(NationalTeamResponsDTO dto){
-        return nationalTeamService.findOrCreat(dto.getId(), dto.getName(), dto.getTla());
+        return nationalTeamService.findOrCreat(dto.getId(), dto.getName(), dto.getTla(), dto.getCrest());
     }
 
 
@@ -37,7 +37,10 @@ public class MatchMapper {
                     DateTimeFormatter.ISO_DATE_TIME)
         );
 
-        if (dto.getScore() != null && dto.getScore().getFullTime() != null){
+        if (dto.getScore() != null &&
+                dto.getScore().getFullTime() != null &&
+                dto.getScore().getFullTime().getHome() != null  &&
+                dto.getScore().getFullTime().getAway() != null){
             match.setHomeTeamScore(dto.getScore().getFullTime().getHome());
             match.setAwayTeamScore(dto.getScore().getFullTime().getAway());
         }

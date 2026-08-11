@@ -11,12 +11,12 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Team {
     @Id
-    @GeneratedValue
     protected int teamId;
     protected String name;
     protected int matchesPlayed;
     protected int goalScored;
     protected int code;
+    protected String crest;
     protected String tla;
 
 

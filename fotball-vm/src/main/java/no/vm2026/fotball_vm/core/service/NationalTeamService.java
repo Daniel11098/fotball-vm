@@ -16,12 +16,13 @@ public class NationalTeamService implements NationalTeams {
     }
 
     @Override
-    public NationalTeam findOrCreat(int teamId, String name, String tla) {
+    public NationalTeam findOrCreat(int teamId, String name, String tla, String crest) {
         return nationalTeamRepository.findById(teamId).orElseGet(() -> {
             NationalTeam newTeam = new NationalTeam();
             newTeam.setTeamId(teamId);
             newTeam.setName(name);
             newTeam.setTla(tla);
+            newTeam.setCrest(crest);
             return nationalTeamRepository.save(newTeam);
         });
     }
